@@ -1,0 +1,53 @@
+<html>
+<style>
+html {
+background-image: url('../img.jpg');
+background-size:100%;
+background-repeat:no-repeat;
+background-color: #305fa5;
+color:white;
+}
+</style>
+<body onload="go()">
+<script>
+function print(){}
+
+var scriptCode = '';
+
+function preloadScripts(lst)
+{
+    for(var i = 0; i < lst.length; i++)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', lst[i], false);
+        xhr.send('');
+        scriptCode += xhr.responseText + '\n';
+    }
+}
+
+function done(){}
+
+window.midExploit = function()
+{
+    preloadScripts(['/WebActivator/702.js', '/WebActivator/jb.js', '/WebActivator/mira.js', '/WebActivator/web-activator.js', '/WebActivator/c-code.js', '/WebActivator/frontend.js'], go);
+}
+
+window.postExploit = function()
+{
+    history.pushState({}, '', '.');
+    setTimeout(function() //update the screen one last time...
+    {
+        eval.call(window, scriptCode);
+        done();
+    }, 100);
+};
+</script>
+<script src="/WebActivator/utils.js"></script>
+<script src="/WebActivator/int64.js"></script>
+<script src="/WebActivator/ps4.js"></script>
+<button id="input1" onfocus="handle2()"></button>
+<button id="input2"></button>
+<button id="input3" onfocus="handle2()"></button>
+<select id="select1"><option value="value1">Value1</option></select>
+</body>
+</html>
